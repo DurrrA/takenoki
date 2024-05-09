@@ -24,8 +24,7 @@ public class User implements UserDetails {
     private String username;
     private String password;
     role role;
-
-    //buat commit 
+    // gk tau ini apaan cuma komen
 
 
     public String getId() {
