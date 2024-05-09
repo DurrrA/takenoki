@@ -25,6 +25,9 @@ public class User implements UserDetails {
     private String password;
     role role;
 
+    //buat commit 
+
+
     public String getId() {
         return id;
     }
