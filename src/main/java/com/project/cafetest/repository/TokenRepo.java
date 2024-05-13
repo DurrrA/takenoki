@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface TokenRepo extends MongoRepository<Token, String> {
 
 
-
     List<Token> findAllTokenByUser(String token);
 
     Optional<Token> findByToken(String token);

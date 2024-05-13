@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/feedback")
+@CrossOrigin
 public class feedbackController {
 
     @Autowired

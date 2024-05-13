@@ -5,6 +5,7 @@ import com.project.cafetest.model.AuthenticationRespone;
 import com.project.cafetest.model.User;
 import com.project.cafetest.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import static org.springframework.web.servlet.function.ServerResponse.ok;
 
 
 @RestController
+@CrossOrigin
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 

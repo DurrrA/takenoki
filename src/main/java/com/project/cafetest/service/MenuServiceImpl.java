@@ -1,6 +1,5 @@
 package com.project.cafetest.service;
 
-
 import com.project.cafetest.model.MenuItem;
 import com.project.cafetest.repository.MenuRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,7 @@ import java.util.List;
 
 
 @Service
-public class MenuServiceImpl implements MenuService{
-
+public class MenuServiceImpl implements MenuService {
 
     @Autowired
     private MenuRepo menuItemRepository;
@@ -32,16 +30,35 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
-    public MenuItem updateMenuItem(String id, MenuItem menuItem) {
-        if (menuItemRepository.existsById(id)) {
-            menuItem.setId(id);
-            return menuItemRepository.save(menuItem);
-        }
-        return null;
+    public List<MenuItem> updateMenuItem(String nama, MenuItem newMenuItem) {
+        List<MenuItem> menuItems = menuItemRepository.findByNama(nama);
+        menuItems.forEach(menuItem -> {
+            if (newMenuItem.getNama() != null && !newMenuItem.getNama().isEmpty()) {
+                menuItem.setNama(newMenuItem.getNama());
+                menuItem.setCategory(newMenuItem.getCategory());
+                menuItem.setHarga(newMenuItem.getHarga());
+                menuItem.setShort_desc(newMenuItem.getShort_desc());
+                menuItem.setGambar(newMenuItem.getGambar());
+                menuItemRepository.save(menuItem);
+            } else {
+                throw new IllegalArgumentException("New menu item name cannot be null or empty");
+            }
+        });
+        return menuItems;
     }
 
     @Override
-    public void deleteMenuItem(String id) {
-        menuItemRepository.deleteById(id);
+    public List<MenuItem> findByCategory(String category) {
+        return menuItemRepository.findByCategory(category);
+    }
+
+    @Override
+    public List<MenuItem> findByNama(String nama) {
+        return menuItemRepository.findByNama(nama);
+    }
+
+    @Override
+    public void deleteMenuItem(String nama) {
+        menuItemRepository.deleteByNama(nama);
     }
 }

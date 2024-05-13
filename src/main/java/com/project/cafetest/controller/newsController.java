@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/newsletter")
+@CrossOrigin
 public class newsController {
 
     @Autowired
