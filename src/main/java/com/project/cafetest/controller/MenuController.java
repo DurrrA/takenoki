@@ -34,11 +34,10 @@ public class MenuController {
     }
     // localhost:8080/api/menu/modify
 
-    @PutMapping("/modify/{nama}")
-    public List<MenuItem> updateMenuItem(@PathVariable String nama, @RequestBody MenuItem menuItem) {
-        return menuService.updateMenuItem(nama, menuItem);
+    @PutMapping("/modify/{id}")
+    public MenuItem updateMenuItem(@PathVariable String id, @RequestBody MenuItem menuItem) {
+        return menuService.updateMenuItem(id, menuItem);
     }
-    // localhost:8080/api/menu/modify/{nama}
 
     @GetMapping("/getnama")
     public List<MenuItem> findByNama(@RequestParam String nama) {
@@ -52,10 +51,15 @@ public class MenuController {
     }
     //localhost:8080/api/menu/getcategory?category={category}
 
-    @DeleteMapping("/modify/{nama}")
-    public void deleteMenuItem(@PathVariable String nama) {
-        menuService.deleteMenuItem(nama);
+    @DeleteMapping("/modify/{id}")
+    public void deleteMenuItem(@PathVariable String id) {
+        menuService.deleteMenuItem(id);
     }
+    // localhost:8080/api/menu/modify/{nama}
+//    @PutMapping("/modify/{nama}")
+//    public List<MenuItem> updateMenuItem(@PathVariable String nama, @RequestBody MenuItem menuItem) {
+//        return menuService.updateMenuItem(nama, menuItem);
+//    }
     // localhost:8080/api/menu/modify/{nama}
 
 }

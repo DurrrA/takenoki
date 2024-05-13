@@ -22,4 +22,5 @@ public class MenuItem {
     private double harga;
     private String gambar;
 
+
 }

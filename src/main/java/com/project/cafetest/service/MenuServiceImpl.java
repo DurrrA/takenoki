@@ -29,22 +29,31 @@ public class MenuServiceImpl implements MenuService {
         return menuItemRepository.save(menuItem);
     }
 
+//    @Override
+//    public List<MenuItem> updateMenuItem(String id, MenuItem newMenuItem) {
+//        List<MenuItem> menuItems = menuItemRepository.findByNama(nama);
+//        menuItems.forEach(menuItem -> {
+//            if (newMenuItem.getNama() != null && !newMenuItem.getNama().isEmpty()) {
+//                menuItem.setNama(newMenuItem.getNama());
+//                menuItem.setCategory(newMenuItem.getCategory());
+//                menuItem.setHarga(newMenuItem.getHarga());
+//                menuItem.setShort_desc(newMenuItem.getShort_desc());
+//                menuItem.setGambar(newMenuItem.getGambar());
+//                menuItemRepository.save(menuItem);
+//            } else {
+//                throw new IllegalArgumentException("New menu item name cannot be null or empty");
+//            }
+//        });
+//        return menuItems;
+//    }
+
     @Override
-    public List<MenuItem> updateMenuItem(String nama, MenuItem newMenuItem) {
-        List<MenuItem> menuItems = menuItemRepository.findByNama(nama);
-        menuItems.forEach(menuItem -> {
-            if (newMenuItem.getNama() != null && !newMenuItem.getNama().isEmpty()) {
-                menuItem.setNama(newMenuItem.getNama());
-                menuItem.setCategory(newMenuItem.getCategory());
-                menuItem.setHarga(newMenuItem.getHarga());
-                menuItem.setShort_desc(newMenuItem.getShort_desc());
-                menuItem.setGambar(newMenuItem.getGambar());
-                menuItemRepository.save(menuItem);
-            } else {
-                throw new IllegalArgumentException("New menu item name cannot be null or empty");
-            }
-        });
-        return menuItems;
+    public MenuItem updateMenuItem(String uuid, MenuItem menuItem) {
+        if (menuItemRepository.existsById(uuid)) {
+            menuItem.setUuid(uuid);
+            return menuItemRepository.save(menuItem);
+        }
+        return null;
     }
 
     @Override
@@ -58,7 +67,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void deleteMenuItem(String nama) {
-        menuItemRepository.deleteByNama(nama);
+    public void deleteMenuItem(String id) {
+        menuItemRepository.deleteById(id);
     }
 }
