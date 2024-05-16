@@ -9,4 +9,5 @@ import java.util.List;
 public interface feedbackRepo extends MongoRepository<feedback, String> {
     List<feedback> findByEmailAndDateGreaterThan(String email, Date date);
     List<feedback> findByReadStatus(boolean readStatus);
+
 }

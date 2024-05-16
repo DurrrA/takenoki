@@ -25,6 +25,11 @@ public class feedbackController {
         return feedbackService.getUnreadFeedback();
     }
 
+    @GetMapping("/read")
+    public List<feedback> getReadFeedback() {
+        return feedbackService.getReadFeedback();
+    }
+
     @PutMapping("/unread/{id}/read")
     public void markAsRead(@PathVariable String id) {
         feedbackService.markAsRead(id);

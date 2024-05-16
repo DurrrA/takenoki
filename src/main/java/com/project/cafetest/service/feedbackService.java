@@ -31,7 +31,9 @@ public class feedbackService {
     public List<feedback> getUnreadFeedback() {
         return feedbackRepo.findByReadStatus(false);
     }
-
+    public List<feedback> getReadFeedback() {
+        return feedbackRepo.findByReadStatus(true);
+    }
     public void markAsRead(String feedbackId) {
         feedback feedback = feedbackRepo.findById(feedbackId)
                 .orElseThrow(() -> new IllegalArgumentException("Feedback not found with id: " + feedbackId));

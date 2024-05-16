@@ -5,6 +5,7 @@ import com.project.cafetest.repository.newsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,6 +23,7 @@ public class newsLetterService {
     }
 
     public newsLetter addNewsLetter(newsLetter newsLetter) {
+        newsLetter.setDate(new Date());
         return newsRepo.save(newsLetter);
     }
 
