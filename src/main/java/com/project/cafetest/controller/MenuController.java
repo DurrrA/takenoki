@@ -5,6 +5,7 @@ package com.project.cafetest.controller;
 import com.project.cafetest.model.MenuItem;
 import com.project.cafetest.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

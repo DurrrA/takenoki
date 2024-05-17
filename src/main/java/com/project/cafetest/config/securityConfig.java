@@ -1,5 +1,6 @@
 package com.project.cafetest.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -51,8 +52,8 @@ public class securityConfig {
                 .addFilterBefore(JwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(
                         e -> e.accessDeniedHandler(
-                                (request, response, accessDeniedException) -> response.setStatus(403))
-                                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                                        (request, response, accessDeniedException) -> response.setStatus(403))
+                                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .logout(l->l
                         .logoutUrl("/logout")
                         .addLogoutHandler(logoutHandler)

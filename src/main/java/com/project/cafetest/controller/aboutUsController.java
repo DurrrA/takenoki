@@ -18,6 +18,11 @@ public class aboutUsController {
         return aboutUsService.getAboutUs();
     }
 
+    @PostMapping("/create")
+    public aboutUs createAboutUs(@RequestBody aboutUs aboutUs) {
+        return aboutUsService.createAboutUs(aboutUs);
+    }
+
     @PutMapping("/modify/{id}")
     public aboutUs updateAboutUs(@PathVariable String id, @RequestBody aboutUs aboutUs) {
         return aboutUsService.updateAboutUs(id, aboutUs);
